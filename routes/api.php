@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\SubscriptionController;
 
 Route::apiResource("services", ServiceController::class);
 Route::get('/', [ServiceController::class, 'index']);
@@ -21,3 +22,5 @@ Route::put('customer/{id}', [CustomerController::class, 'update']);
 Route::delete('customer/{id}', [CustomerController::class, 'destroy']);  
 Route::patch('customer/{id}/activate', [CustomerController::class, 'activate']);   
 Route::patch('customer/{id}/deactivate', [CustomerController::class, 'deactivate']);
+
+Route::apiResource('subscriptions', SubscriptionController::class);
