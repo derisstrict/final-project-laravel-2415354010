@@ -15,12 +15,8 @@ Route::delete('{service}', [ServiceController::class, 'destroy']);
 Route::patch("services/{service}/activate", [ServiceController::class,"activate",]);
 Route::patch("services/{service}/deactivate", [ServiceController::class, "deactivate"]);
 
-Route::get('customer/', [CustomerController::class, 'index']);       
-Route::post('customer/', [CustomerController::class, 'store']);      
-Route::get('customer/{id}', [CustomerController::class, 'show']);      
-Route::put('customer/{id}', [CustomerController::class, 'update']);     
-Route::delete('customer/{id}', [CustomerController::class, 'destroy']);  
-Route::patch('customer/{id}/activate', [CustomerController::class, 'activate']);   
-Route::patch('customer/{id}/deactivate', [CustomerController::class, 'deactivate']);
+Route::apiResource('customers', CustomerController::class);
+Route::patch('customers/{id}/activate', [CustomerController::class, 'activate']);   
+Route::patch('customers/{id}/deactivate', [CustomerController::class, 'deactivate']);
 
 Route::apiResource('subscriptions', SubscriptionController::class);
