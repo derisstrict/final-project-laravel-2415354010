@@ -7,11 +7,6 @@ use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\SubscriptionController;
 
 Route::apiResource("services", ServiceController::class);
-Route::get('/', [ServiceController::class, 'index']);
-Route::post('/', [ServiceController::class, 'store']);
-Route::get('{service}', [ServiceController::class, 'show']);
-Route::put('{service}', [ServiceController::class, 'update']);
-Route::delete('{service}', [ServiceController::class, 'destroy']);
 Route::patch("services/{service}/activate", [ServiceController::class,"activate",]);
 Route::patch("services/{service}/deactivate", [ServiceController::class, "deactivate"]);
 
