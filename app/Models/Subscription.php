@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Subscription extends Model
 {
@@ -14,5 +15,13 @@ class Subscription extends Model
             'end_date' => 'date',
             "status" => "boolean",
         ];
+    }
+
+    public function customer(): BelongsTo {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function service(): BelongsTo {
+        return $this->belongsTo(Service::class);
     }
 }
