@@ -99,6 +99,16 @@ class SubscriptionController extends Controller
             ], 404);
         }
 
+        if ($subscriptionObj->status === 'dismantle') {
+            return response()->json([
+                "success" => false,
+                "message" => "Validation failed",
+                "errors" => [
+                    "status" => ["Cannot update a subscription that has already been dismantled."],
+                ],
+            ], 422);
+        }
+
         $data = $request->validate([
             "customer_id" => ["sometimes", "integer", "exists:customers,id"],
             "service_id" => ["sometimes", "integer", "exists:services,id"],
